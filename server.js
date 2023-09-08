@@ -1,5 +1,8 @@
 const express = require("express");
+const cors = require('cors');
 const app = express();
+// Allow requests from http://localhost:3000
+app.use(cors({ origin: 'http://localhost:3000' }));
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
 const path = require('path')
