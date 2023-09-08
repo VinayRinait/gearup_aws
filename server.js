@@ -58,7 +58,7 @@ let userCart= require("./routes/userCart");
 
 //assuming app is express Object.
 app.get('/',function(req,res) {
-  res.sendFile(path.join(__dirname+'/public/build/index.html'));
+  res.sendFile(path.join(__dirname+'/build/index.html'));
 });
 
 app.use("/webUser",webUser)
