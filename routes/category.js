@@ -13,3 +13,4 @@ router.post("/updateCategory", categoryController.updateCategory)
 
 
 module.exports = router ;
+
