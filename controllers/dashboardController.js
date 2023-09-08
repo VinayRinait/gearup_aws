@@ -60,7 +60,7 @@ exports.addBanner = async (req, res) => {
             let fileName = Date.now() + i + '.png';
             let filePath = "public/banner_images/" + i + fileName;
             fs.writeFileSync(filePath, buff);
-            let dbFilePath = URL + 'banner_images/' + fileName;
+            let dbFilePath = URL + '/banner_images/' + fileName;
             data.bannerImage.push({ path: dbFilePath.toString() });
         }
 
