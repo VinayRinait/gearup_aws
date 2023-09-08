@@ -3,7 +3,7 @@ const router = express.Router();
 const dashboardController = require("../controllers/dashboardController");
 const upload = require('../utils/bannerUpload');
 
-router.post("/getalldashboard",dashboardController.getAllDashboardData)
+router.get("/getalldashboard",dashboardController.getAllDashboardData)
 router.post("/getalldashboardforuser",dashboardController.getAllDashboardDataForUser)
 router.post("/addbanner",upload('bannerImage'),dashboardController.addBanner)
 router.post("/deletebanner",dashboardController.deleteBanner)
