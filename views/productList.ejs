@@ -1,0 +1,177 @@
+<%- include('header.ejs')%>
+	<!-- PRODUCT SECTION = START -->
+
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="section-title">
+						<h3 style="color: black;">
+							<span class="orange-text"><%= data[0].categoryId.categoryName%></span> Category
+						</h3>
+					</div>
+				</div>
+			</div>
+			<% if(data.length != 0) { %>
+			<div class="row">
+				<% for (let datas of data) { %>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<img src="<%= datas.productImage[0].path%>" alt="">
+						</div>
+						<h3 style="color: black;"><%= datas.productName %></h3>
+						<p class="product-price" style="color: black;">
+							<span></span> <%= datas.price%> Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<!-- <div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra2.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Orange Genda fool</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 405 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra3.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">white Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 86 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra4.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 75 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra5.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 78 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra1.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 29 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra2.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 69 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra3.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 36 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 text-center">
+					<div class="single-product-item">
+						<div class="product-image">
+							<a href="p6_singleProduct.jsp"><img
+								src="/phoolpics/gajra/gajra4.png" alt=""></a>
+						</div>
+						<h3 style="color: black;">Combine Flowers</h3>
+						<p class="product-price" style="color: black;">
+							<span>Per Kg</span> 963 Rs
+						</p>
+						<a href="pv15_payment.jsp" class="cart-btn"><i
+							class="fa-solid fa-bag-shopping"></i> Buy Now</a>&nbsp;&nbsp;&nbsp; <a
+							href="" class="cart-btn"><i class="fas fa-shopping-cart"></i>
+							Add to Cart</a>
+					</div>
+				</div> -->
+				<% } %>
+			</div>
+			<% } else { %>
+				<h1>No Products Found...</h1>
+			<% } %>
+		</div>
+	</div>
+	<!-- PRODUCT SECTION = END -->
+
+	<%- include('footer.ejs')%>

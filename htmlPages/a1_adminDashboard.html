@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
+<!-- CDN FOR SWEET ALERT  -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-- FONT AWESOME CDN -->
+<script src="https://kit.fontawesome.com/9ccd7bd56c.js"
+	crossorigin="anonymous"></script>
+
+<!-- DATA TABLE JAVA SCRIPT 3 CDN LINK for head  -->
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script
+	src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- DATA TABLE 2 CSS LINKS for head -->
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+
+
+<title>Dashboard</title>
+</head>
+
+<body
+	style="background-color: rgba(123, 143, 189, 0.5); background-size: fixed;">
+	<div class="container-fluid">
+		<div class="row">
+
+			<script>
+				$(document).ready(function() {
+					$("#section_rqmtfillView").show();
+					$("#section_rqmtfillForm").hide();
+
+					$("#id_rqmtfillView").click(function() {
+						$("#section_rqmtfillView").show();
+						$("#section_rqmtfillForm").hide();
+					});
+
+					$("#id_rqmtfillForm").click(function() {
+						$("#section_rqmtfillView").hide();
+						$("#section_rqmtfillForm").show();
+					});
+				});
+
+				$(document).ready(function() {
+					$("#section_viewmerchant").show();
+					$("#section_addmerchant").hide();
+
+					$("#id_viewmerchant").click(function() {
+						$("#section_viewmerchant").show();
+						$("#section_addmerchant").hide();
+					});
+
+					$("#id_addmerchant").click(function() {
+						$("#section_viewmerchant").hide();
+						$("#section_addmerchant").show();
+					});
+				});
+
+				$(document).ready(function() {
+					$("#section_viewdelivery").show();
+					$("#section_adddelivery").hide();
+
+					$("#id_viewdelivery").click(function() {
+						$("#section_viewdelivery").show();
+						$("#section_adddelivery").hide();
+					});
+
+					$("#id_adddelivery").click(function() {
+						$("#section_viewdelivery").hide();
+						$("#section_adddelivery").show();
+					});
+				});
+
+				$(document).ready(function() {
+					$("#section_1").show();
+					$("#section_tablejob").show();
+					$("#section_postjob").hide();
+					$("#section_2").hide();
+					$("#section_3").hide();
+					$("#section_4").hide();
+					$("#section_5").hide();
+					$("#section_6").hide();
+
+					$("#id_1").click(function() {
+						$("#section_1").show();
+						$("#section_tablejob").show();
+						$("#section_postjob").hide();
+						$("#section_2").hide();
+						$("#section_3").hide();
+						$("#section_4").hide();
+						$("#section_5").hide();
+						$("#section_6").hide();
+					});
+
+					$("#id_tablejob").click(function() {
+						$("#section_tablejob").show();
+						$("#section_postjob").hide();
+					});
+					$("#id_postjob").click(function() {
+						$("#section_tablejob").hide();
+						$("#section_postjob").show();
+					});
+
+					$("#id_2").click(function() {
+						$("#section_1").hide();
+						$("#section_2").show();
+						$("#section_3").hide();
+						$("#section_4").hide();
+						$("#section_5").hide();
+						$("#section_6").hide();
+					});
+
+					$("#id_3").click(function() {
+						$("#section_1").hide();
+						$("#section_2").hide();
+						$("#section_3").show();
+						$("#section_4").hide();
+						$("#section_5").hide();
+						$("#section_6").hide();
+					});
+
+					$("#id_4").click(function() {
+						$("#section_1").hide();
+						$("#section_2").hide();
+						$("#section_3").hide();
+						$("#section_4").show();
+						$("#section_5").hide();
+						$("#section_6").hide();
+					});
+
+					$("#id_5").click(function() {
+						$("#section_1").hide();
+						$("#section_2").hide();
+						$("#section_3").hide();
+						$("#section_4").hide();
+						$("#section_5").show();
+						$("#section_6").hide();
+					});
+
+					$("#id_6").click(function() {
+						$("#section_1").hide();
+						$("#section_2").hide();
+						$("#section_3").hide();
+						$("#section_4").hide();
+						$("#section_5").hide();
+						$("#section_6").show();
+					});
+
+				});
+			</script>
+
+			<div class="col col-lg-12 clmd-12 colsm-12 col-xs-12">
+				<nav class="navbar navbar-expand-lg navbar-dark  mt-2"
+					style="border-radius: 20px; background-color: rgba(103, 174, 130, 0.9);">
+
+					<div class="wrapper-user">
+						<img alt="user"
+							src="https://img.favpng.com/14/3/22/stock-photography-computer-icons-user-png-favpng-TWgLj8kmcdnekcpWySfpV97h3.jpg"
+							width="40px" height="40px" style="border-radius: 50px;">
+
+					</div>
+					<button class="navbar-toggler" type="button" data-toggle="collapse"
+						data-target="#navbarSupportedContent"
+						aria-controls="navbarSupportedContent" aria-expanded="false"
+						aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+
+					&nbsp;&nbsp;&nbsp;
+					<h3>
+						<b>Welcome Admin </b>
+					</h3>
+
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+						</ul>
+						<ul class="navbar-nav ml-auto ">
+
+							<li class="nav-item dropdown "><a
+								class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+								role="button" data-toggle="dropdown" aria-haspopup="true"
+								aria-expanded="true"> Admin </a>
+								<div class="dropdown-menu " aria-labelledby="navbarDropdown">
+									<a data-toggle="tab" class="dropdown-item"
+										href="#Account setting"><i class="fa-solid fa-cog mr-1"></i>
+										Setting</a> <a data-toggle="tab" class="dropdown-item"
+										href="#Notification"><i class="fa-solid fa-bell mr-1"></i>Notification</a>
+									<div class="dropdown-divider"></div>
+									<a data-toggle="tab" class="dropdown-item" href="#"><i
+										class="fa-solid fa-user-lock mr-1"></i>logout</a>
+								</div></li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="row">
+			<div
+				class="col col-lg-2 col-md-2 col-sm-12 col-xs-12 d-md-block d-none mt-3 ml-2"
+				style="background-color: rgba(230, 234, 197, 1); box-shadow: 2px 8px 9px black; border-radius: 10px;">
+				<ul class="nav flex-column ">
+					<li class="nav-item"><br> <a data-toggle="tab"
+						class="nav-link active" href="#"><i
+							class="fa-solid fa-user mr-1"></i> <span id="id_1">MyOrder
+						</span></a>
+						<hr></li>
+					<li class="nav-item"><a data-toggle="tab" class="nav-link"
+						href="#"><i class="fa-solid fa-cog mr-1"></i> <span id="id_2">Merchant
+						</span></a>
+						<hr></li>
+					<li class="nav-item"><a data-toggle="tab" class="nav-link"
+						href="#"><i class="fa-solid fa-shield mr-1"></i> <span
+							id="id_3">User</span> </a>
+						<hr></li>
+					<li class="nav-item"><a data-toggle="tab" class="nav-link"
+						href="#"><i class="fa-solid fa-bell mr-1"></i> <span id="id_4">Delivery</span>
+					</a>
+						<hr></li>
+					<li class="nav-item"><a data-toggle="tab" class="nav-link"
+						href="#"><i class="fa-solid fa-bell mr-1"></i> <span id="id_5">Add
+								Flower Category</span> </a>
+						<hr></li>
+
+					<li class="nav-item"><a data-toggle="tab" class="nav-link"
+						href="#"><i class="fa-solid fa-bell mr-1"></i> <span id="id_6">Add
+								Product</span> </a>
+						<hr></li>
+					<hr>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					</li>
+
+				</ul>
+			</div>
+			<div class="col col-lg-9 col-md-9 col-sm-9 col-xs-9 ">
+
+				<!-- EXISTING PRODUCT DELETE dismissible alert message START -->
+
+				<div class="card-body tab-content  mt-4 bg-light"
+					style="width: 1040px">
+
+					<section id="section_1">
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+							href="" type="submit" class="btn btn-info text-center"
+							id="id_tablejob" style="text-align: center;">View Order</a>
+
+						<!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-info text-center"
+							id="" style="text-align: center;">New Order</button> -->
+
+						<section id="section_tablejob">
+
+							<!-- JAVA SCRIPT CODE FOR DATA TABLE PAGINATION  -->
+							<script>
+								$(document).ready(function() {
+									//alert("hello")
+									$('#ordercust').DataTable();
+								});
+							</script>
+
+							<!-- Table = class="table table-success" -->
+							<hr>
+							<br>
+							<table id="ordercust"
+								class="table table-striped table-bordered table-sm"
+								cellspacing="0" width="auto p-3"background-color:red;>
+								<thead>
+									<tr>
+
+										<th>Order Id</th>
+										<th>Product Name</th>
+										<th>Total Item</th>
+										<th>Total Amount</th>
+										<th>Order Status</th>
+										<th>View Order</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>Order_BB1</td>
+										<td>White rose, bookey</td>
+										<td>3</td>
+										<td>990 Rs</td>
+										<td>Pending</td>
+										<td><button class="btn btn-secondary" id="id_postjob"
+												type="submit">View Details</button></td>
+
+									</tr>
+									<tr>
+										<td>Order_BB2</td>
+										<td>Genda Fool, lily</td>
+										<td>2</td>
+										<td>85 Rs</td>
+										<td>Pending</td>
+										<td><button class="btn btn-secondary" id="id_postjob"
+												type="submit">View Details</button></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</section>
+
+						<section id="section_postjob">
+
+							<div class="container-fluid">
+								<div class="row">
+									<br>
+									<hr>
+									<div class="col-lg-0 col-md-6 col-sm-8 col-xs-12"></div>
+
+									<div class="col-lg-12 col-md-6 col-sm-8 col-xs-12">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="container" data-aos="fade-up">
+													<form action="" method="post" enctype="multipart/form-data"
+														class="c-form">
+														<!-- General Information -->
+														<div class="box">
+															<div class="box-header">
+																<!-- <h4 class="container-fluid mb-5 wow fadeIn">General
+																	Information</h4> -->
+															</div>
+
+
+															<div class="box-body">
+																<div class="row">
+																	<div class="container">
+
+																		<div class="col-lg-12 well">
+																			<div class="row">
+																				<form>
+																					<div class="  d-flex justify-content-center">
+																						<div
+																							class=" text-dark bg-light mb-3 h-2 d-inline-block shadow p-3 mb-5 bg-body rounded"
+																							style="width: 900px;">
+
+																							<div class="card-body ">
+																								<div class="form-group">
+																									<h4>Status:</h4>
+																									</h6>
+																									NOT DELIVERED
+																									</h6>
+																									<hr>
+																									<H4 for="Items ">My Items (1)</H4>
+																									<h6 for="Items" class="pull-right">Total
+																										Price: Rs 999.00</h6>
+																									<hr>
+																								</div>
+
+																								<img src="img/rose.png"
+																									class="rounded float-left" width="100"
+																									height="100" alt="...">
+																								<div class="row">
+																									<div class="card-body ">
+																										<H6 for="details">Three Roses Monthly</H6>
+																										<H6 for="details">Price: Rs999.00</H6>
+																										<H6 for="details">Qty: 1</H6>
+																									</div>
+																								</div>
+																								<hr>
+																								<div class="form-group">
+																									<H4 for="ordsummary ">Order Summary</H4>
+																									<H6 for="ordersummary ">Total Price</H6>
+																									<h6 for="ordersummary" class="pull-right">
+																										Rs 999.00</h6>
+																									<H6 for="ordersummary ">Shipping Charges</H6>
+																									<h6 for="ordersummary" class="pull-right">Rs
+																										0</h6>
+																								</div>
+																								<hr>
+																								<h4>You Need To Pay</h4>
+																								<h6 for="Items" class="pull-right">Rs
+																									999.00</h6>
+																								<hr>
+																								<h4>Mode Of Payment</h4>
+																								<H6>Cash On Devlivery</H6>
+																								<hr>
+																								<h4>Devlivery Address</h4>
+																								<H6 for="Status">Jay Boriwar</H6>
+																								<H6 for="Status">Mobile No: 7986473968</H6>
+																								<H6 for="Status">Address : Nagpur</H6>
+
+																							</div>
+																						</div>
+																					</div>
+
+																				</form>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+
+													</form>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-lg-0 col-md-6 col-sm-8 col-xs-12"></div>
+								</div>
+							</div>
+						</section>
+
+						<br>
+
+					</section>
+
+
+					<section id="section_2">
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+							href="" type="submit" class="btn btn-info text-center"
+							id="id_viewmerchant" style="text-align: center;">View
+							Merchant</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-info text-center"
+							id="id_addmerchant" style="text-align: center;">Add
+							Merchant</button>
+
+
+						<section id="section_viewmerchant">
+
+							<!-- JAVA SCRIPT CODE FOR DATA TABLE PAGINATION  -->
+							<script>
+								$(document).ready(function() {
+									//alert("hello")
+									$('#merchant').DataTable();
+								});
+							</script>
+
+							<!-- Table = class="table table-success" -->
+							<hr>
+							<br>
+							<table id="merchant"
+								class="table table-striped table-bordered table-sm"
+								cellspacing="0" width="auto p-3"background-color:red;>
+								<thead>
+									<tr>
+
+										<th>ID</th>
+										<th>Full Name</th>
+										<th>Email</th>
+										<th>Mobile Number</th>
+										<th>Password</th>
+										<th>City</th>
+										<th>State</th>
+										<th>View Order</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>USER_BB1</td>
+										<td>Aklesh yadav</td>
+										<td>Yadavji@yaaho.com</td>
+										<td>8882220001</td>
+										<td>Jiyadav@820</td>
+										<td>Patna</td>
+										<td>Bihar</td>
+										<td><a href="">View Details</a></td>
+
+									</tr>
+									<tr>
+										<td>USER_BB2</td>
+										<td>Manoj chowdhary</td>
+										<td>manojMH@gmail.comn</td>
+										<td>9876543210</td>
+										<td>ManoCH@987</td>
+										<td>Nagpur</td>
+										<td>Maharastra</td>
+										<td><a href="">View Details</a></td>
+									</tr>
+								</tbody>
+							</table>
+
+						</section>
+
+						<section id="section_addmerchant">
+
+							<div class="container-fluid">
+								<div class="row">
+									<br>
+									<hr>
+									<div class="col-lg-0 col-md-6 col-sm-8 col-xs-12"></div>
+
+									<div class="col-lg-12 col-md-6 col-sm-8 col-xs-12">
+
+										<div class="card">
+											<div class="card-body">
+												<div class="container" data-aos="fade-up">
+													<form action="" method="post" enctype="multipart/form-data"
+														class="c-form">
+														<div class="box">
+
+															<div class="box-body">
+																<div class="row">
+																	<div class="container-fluid" id='container'>
+																		<div class="row">
+																			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+																			</div>
+
+																			<!-- --form design-->
+																			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+																				<form action=""
+																					style="background-color: rgba(240, 241, 240, 0.3); border: 2px solid black; border-radius: 10px; margin-top: 20px; padding-left: 50px; padding-right: 50px; padding-bottom: 30px">
+																					<br> <br>
+																					<h3 style="text-align: center;">
+																						<b>Add Merchant Here</b>
+																					</h3>
+
+																					<hr>
+																					<div class="form-group">
+																						<label for="Name">Full Name:</label> <input
+																							type="text" class="form-control" id="Name"
+																							placeholder="Enter Full Name:">
+																					</div>
+																					<div class="form-group">
+																						<label for="Email">Email:</label> <input
+																							type="text" class="form-control" id="Email"
+																							placeholder="Enter Email">
+																					</div>
+																					<div class="form-group">
+																						<label for="Mobile">Mobile No:</label> <input
+																							type="text" class="form-control" id="Mobile"
+																							placeholder="Enter Mobile No:">
+																					</div>
+																					<div class="form-group">
+																						<label for="Password">Password</label> <input
+																							type="text" class="form-control" id="Password"
+																							placeholder="Enter Password">
+																					</div>
+																					<div class="form-group">
+																						<label for="Inputselect">City</label> <select
+																							class="form-control">
+																							<option selected disable value="">Select
+																								City</option>
+																							<option>Nagpur</option>
+																							<option>Pune</option>
+																							<option>Banglore</option>
+																							<option>Wardha</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<label for="Inputselect">State</label> <select
+																							class="form-control">
+																							<option selected disable value="">Select
+																								State</option>
+																							<option>Maharastra</option>
+																							<option>Bangal</option>
+																							<option>Panjab</option>
+																							<option>Madhya pradesh</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<label for="Address">Address</label> <input
+																							type="text" class="form-control" id="Address"
+																							placeholder="Enter Address">
+																					</div>
+																					<br>
+																					<br>
+																					<hr
+																						style="height: 3px; border-width: 0; color: black; background-color: black;">
+
+																					<div
+																						class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+																						<button type="button"
+																							class="btn btn-primary btn-lg">Register</button>
+																					</div>
+																				</form>
+																			</div>
+																			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+															<br> <br>
+
+													</form>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-lg-0 col-md-6 col-sm-8 col-xs-12"></div>
+								</div>
+							</div>
+						</section>
+
+						<br>
+
+					</section>
+
+					<section id="section_3">
+						<h6>User Section</h6>
+						<!-- JAVA SCRIPT CODE FOR DATA TABLE PAGINATION  -->
+						<script>
+							$(document).ready(function() {
+								//alert("hello")
+								$('#usersec').DataTable();
+							});
+						</script>
+
+						<!-- Table = class="table table-success" -->
+						<hr>
+						<br>
+						<table id="usersec"
+							class="table table-striped table-bordered table-sm"
+							cellspacing="0" width="auto p-3"background-color:red;>
+							<thead>
+								<tr>
+
+									<th>Full Name</th>
+									<th>Email</th>
+									<th>Mobile Number</th>
+									<th>Password</th>
+									<th>City</th>
+									<th>State</th>
+									<th>View Order</th>
+								</tr>
+							</thead>
+
+							<tbody>
+								<tr>
+									<td>Aklesh yadav</td>
+									<td>Yadavji@yaaho.com</td>
+									<td>8882220001</td>
+									<td>Jiyadav@820</td>
+									<td>Patna</td>
+									<td>Bihar</td>
+									<td><a href="">View Details</a></td>
+
+								</tr>
+								<tr>
+									<td>Manoj chowdhary</td>
+									<td>manojMH@gmail.comn</td>
+									<td>9876543210</td>
+									<td>ManoCH@987</td>
+									<td>Nagpur</td>
+									<td>Maharastra</td>
+									<td><a href="">View Details</a></td>
+								</tr>
+							</tbody>
+						</table>
+
+						<form action="">
+							<div class="form-group"></div>
+						</form>
+					</section>
+
+
+					<section id="section_4">
+
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+							href="" type="submit" class="btn btn-info text-center"
+							id="id_viewdelivery" style="text-align: center;">View
+							Delivery Person</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-info text-center"
+							id="id_adddelivery" style="text-align: center;">Add
+							delivery Person</button>
+
+
+						<section id="section_viewdelivery">
+
+							<!-- JAVA SCRIPT CODE FOR DATA TABLE PAGINATION  -->
+							<script>
+								$(document).ready(function() {
+									//alert("hello")
+									$('#delivery').DataTable();
+								});
+							</script>
+
+							<!-- Table = class="table table-success" -->
+							<hr>
+							<br>
+							<table id="delivery"
+								class="table table-striped table-bordered table-sm"
+								cellspacing="0" width="auto p-3"background-color:red;>
+								<thead>
+									<tr>
+
+										<th>ID</th>
+										<th>Name</th>
+										<th>Email</th>
+										<th>Mobile</th>
+										<th>Password</th>
+										<th>City</th>
+										<th>Address</th>
+									</tr>
+								</thead>
+
+								<tbody>
+									<tr>
+										<td>DLRY_BB1</td>
+										<td>Ramesh Sawale</td>
+										<td>ramesh@gmail.com</td>
+										<td>8854751123</td>
+										<td>ramesh123</td>
+										<td>Nagpur</td>
+										<td>Manish Nagar</td>
+
+
+									</tr>
+									<tr>
+										<td>DLRY_BB2</td>
+										<td>Suresh Borikar</td>
+										<td>suresh@gmail.com</td>
+										<td>7582536123</td>
+										<td>suresh123</td>
+										<td>Nagpur</td>
+										<td>Sawarkar Nagar</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</section>
+
+						<section id="section_adddelivery">
+
+							<div class="container-fluid">
+								<div class="row">
+									<br>
+									<hr>
+									<div class="col-lg-0 col-md-6 col-sm-8 col-xs-12"></div>
+									<div class="col-lg-12 col-md-6 col-sm-8 col-xs-12">
+										<div class="card">
+											<div class="card-body">
+												<div class="container" data-aos="fade-up">
+													<form action="" method="post" enctype="multipart/form-data"
+														class="c-form">
+														<div class="box">
+
+															<div class="box-body">
+																<div class="row">
+																	<div class="container-fluid" id='container'>
+																		<div class="row">
+																			<div class="col-lg-0 col-md-4 col-sm-4 col-xs-12">
+																			</div>
+
+																			<!-- --form design-->
+																			<div class="col-lg-12 col-md-4 col-sm-4 col-xs-12">
+
+																				<form action=""
+																					style="background-color: rgba(240, 241, 240, 0.3); border: 2px solid black; border-radius: 10px; margin-top: 40px; padding-left: 50px; padding-right: 50px; padding-bottom: 30px">
+																					<br> <br>
+																					<h3 style="text-align: center;">
+																						<b>Add Delivery Person</b>
+																					</h3>
+
+																					<hr>
+																					<div class="form-group">
+																						<label for="Name">Full Name:</label> <input
+																							type="text" class="form-control" id="Name"
+																							placeholder="Enter Full Name">
+																					</div>
+																					<div class="form-group">
+																						<label for="Email">Email:</label> <input
+																							type="text" class="form-control" id="Email"
+																							placeholder="Enter Email">
+																					</div>
+																					<div class="form-group">
+																						<label for="Mobile">Mobile No:</label> <input
+																							type="text" class="form-control" id="Mobile"
+																							placeholder="Enter Mobile Number">
+																					</div>
+																					<div class="form-group">
+																						<label for="Password">Password</label> <input
+																							type="text" class="form-control" id="Password"
+																							placeholder="Enter Password">
+																					</div>
+																					<div class="form-group">
+																						<label for="Inputselect">City</label> <select
+																							class="form-control">
+																							<option selected disabled value="">Select
+																								City</option>
+																							<option>Nagpur</option>
+																							<option>Pune</option>
+																							<option>Banglore</option>
+																							<option>Wardha</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<label for="Inputselect">State</label> <select
+																							class="form-control">
+																							<option selected disabled value="">Select
+																								State</option>
+																							<option>Maharastra</option>
+																							<option>Bengal</option>
+																							<option>Punjab</option>
+																							<option>Madhya Pradesh</option>
+																						</select>
+																					</div>
+																					<div class="form-group">
+																						<label for="Address">Address</label> <input
+																							type="text" class="form-control" id="Address"
+																							placeholder="Enter Address">
+																					</div>
+																					<br> <br>
+																					<hr
+																						style="height: 3px; border-width: 0; color: black; background-color: black;">
+
+																					<div
+																						class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+																						<button type="button"
+																							class="btn btn-primary btn-lg">Register</button>
+																					</div>
+																				</form>
+																			</div>
+																			<div class="col-lg-0 col-md-4 col-sm-4 col-xs-12"></div>
+																		</div>
+																	</div>
+
+																</div>
+															</div>
+															<br> <br>
+															<!-- 
+															<div class="text-center">
+																<button type="submit" class="btn"
+																	style="color: white; background-color: #FF3E6C;">Submit</button>
+															</div> -->
+													</form>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="col-lg-1 col-md-6 col-sm-8 col-xs-12"></div>
+								</div>
+							</div>
+						</section>
+
+						<br>
+
+					</section>
+
+					<section id="section_5">
+						<!-- <h6 class="center">Add Flower Category Section</h6> -->
+						<div class="container-fluid" id='container'>
+							<div class="row">
+								<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+
+								<div class="row">
+									<!--start col-->
+									<div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+										<div class="card border-0 bg-light rounded shadow">
+											<div class="card-body p-4">
+												<div class="mt-3">
+
+													<img
+														src="https://img.freepik.com/free-photo/assortment-leaves-flowers-white-background_24972-2144.jpg"
+														class="rounded float-left" width="100%" height="100%"
+														alt="...">
+												</div>
+											</div>
+											<br> <a href="page-job-detail.html" type="submit"
+												class="btn btn-danger"><b>Remove</b></a>
+										</div>
+									</div>
+									<!--end col-->
+									<!--start col-->
+									<div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+										<div class="card border-0 bg-light rounded shadow">
+											<div class="card-body p-4">
+												<div class="mt-3">
+
+													<img
+														src="https://img.freepik.com/free-photo/assortment-leaves-flowers-white-background_24972-2144.jpg"
+														class="rounded float-left" width="100%" height="100%"
+														alt="...">
+												</div>
+											</div>
+											<br> <a href="page-job-detail.html" type="submit"
+												class="btn btn-danger"><b>Remove</b></a>
+										</div>
+									</div>
+									<!--end col-->
+									<!--start col-->
+									<div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+										<div class="card border-0 bg-light rounded shadow">
+											<div class="card-body p-4">
+												<div class="mt-3">
+
+													<img
+														src="https://img.freepik.com/free-photo/assortment-leaves-flowers-white-background_24972-2144.jpg"
+														class="rounded float-left" width="100%" height="100%"
+														alt="...">
+												</div>
+											</div>
+											<br> <a href="page-job-detail.html" type="submit"
+												class="btn btn-danger"><b>Remove</b></a>
+										</div>
+									</div>
+									<!--end col-->
+									<!--start col-->
+									<div class="col-lg-4 col-md-6 col-12 mt-4 pt-2">
+										<div class="card border-0 bg-light rounded shadow">
+											<div class="card-body p-4">
+												<div class="mt-3">
+
+													<img
+														src="https://img.freepik.com/free-photo/assortment-leaves-flowers-white-background_24972-2144.jpg"
+														class="rounded float-left" width="100%" height="100%"
+														alt="...">
+												</div>
+											</div>
+											<br> <a href="page-job-detail.html" type="submit"
+												class="btn btn-danger"><b>Remove</b></a>
+										</div>
+									</div>
+									<!--end col-->
+
+								</div>
+								<!--end row-->
+							</div>
+
+							<div class="container">
+								<div class="row">
+									<!-- --form design-->
+									<div class="col-lg-2 col-md-4 col-sm-8 col-xs-12"></div>
+									<div class="col-lg-8 col-md-4 col-sm-8 col-xs-12">
+										<br>
+										<form action="#"
+											style="background-color: rgba(240, 241, 240, 0.3); border: 2px solid black; border-radius: 10px; margin-top: 40px; padding-left: 50px; padding-right: 50px; padding-bottom: 30px">
+											<div class="form-group">
+												<br>
+												<h3 style="text-align: center;">
+													<b>Add Category Here</b>
+												</h3>
+												<br>
+												<div class="form-group">
+													<label for="categoryname">Category Name</label> <input
+														type="text" class="form-control" id="categoryname"
+														name="categoryname" placeholder="Category Name" required>
+												</div>
+												<div class="form-group">
+													<label for="categoryimage">Category Image</label> <input
+														type="file" class="form-control" id="categoryimage"
+														name="categoryimage" placeholder="Category Image" required>
+												</div>
+												<hr
+													style="height: 3px; border-width: 0; color: black; background-color: black;">
+
+												<button class="btn btn-primary" type="submit"
+													style="text-align: center;">Submit</button>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+												<a href="#" class="btn btn-secondary"
+													style="margin-left: 280px">Back</a> <br>
+
+											</div>
+										</form>
+									</div>
+									<div class="col-lg-2 col-md-4 col-sm-8 col-xs-12"></div>
+								</div>
+							</div>
+					</section>
+
+
+					<section id="section_6">
+						<h6>Add Product Section</h6>
+						<form action="/addProduct">
+							<div class="form-group">
+								<br> <input type="text" class="form-control"
+									name="productName" placeholder="Enter Product Name" required>
+								<br> <select class="form-control"
+									aria-label="Default select example">
+									<option selected disabled name="category" value="" required>Select
+										the Product category</option>
+									<option value="Mix">Mix Flower</option>
+									<option value="Bouquet">Bouquet</option>
+									<option value="Haar">Haar</option>
+									<option value="Gajra">Gajra</option>
+								</select> <br> <input type="text" class="form-control"
+									name="quantity" placeholder="Enter Product Quantity in Grams"
+									required> <br> <input type="number"
+									class="form-control" name="price"
+									placeholder="Enter Product Price" required> <br> <input
+									type="text" class="form-control" name="description"
+									placeholder="Enter Product Description" required> <br>
+								<select class="form-control" aria-label="Default select example">
+									<option selected disabled name="status" value="" required>Select
+										Product Status</option>
+									<option value="Active">Active</option>
+									<option value="Inactive">Inactive</option>
+								</select> <br>
+							</div>
+							<div class="form-group">
+								<label><strong>Add Product Photo: </strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+								<input type="file" class="form-control" name="attach"
+									placeholder="Add product pic" required> <br>
+								<hr>
+								<button class="btn btn-primary" type="submit">
+									ADD Product&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-circle-plus"></i>
+								</button>
+
+
+							</div>
+						</form>
+					</section>
+
+					<!-- <section id="section_8">
+						<h6>Advertiser/FAQ Section</h6>
+						<form action="">
+							<div class="form-group"></div>
+						</form>
+					</section>
+ -->
+
+
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+
+		<script  src="./script/Admin.js"></script>
+</body>
+</html>

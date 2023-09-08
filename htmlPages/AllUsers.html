@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<!-- JQUERY CDN    if doesn't worked bootstrap 2 jquery cnd at bottom then use this CDN-->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<title>Bloomb</title>
+</head>
+<body>
+	<c:choose>
+		<c:when test="${mode=='ALL_USERS' }">
+			<h3>All Users</h3>
+			<hr>
+			<div class="table-responsive">
+				<table class="table table-success">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Mobile</th>
+							<th>City</th>
+							<th>Email</th>
+							<th>Delete</th>
+							<th>Edit</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="sesAllUsers" items="${sesAllUsers }">
+							<tr>
+								<td>${sesAllUsers.id}</td>
+								<td>${sesAllUsers.firstname}</td>
+								<td>${sesAllUsers.lastname}</td>
+								<td>${sesAllUsers.mobile}</td>
+								<td>${sesAllUsers.city}</td>
+								<td>${sesAllUsers.email}</td>
+								<td><a href="/deleteUser?id=${sesAllUsers.id }"><i
+										class="fa-solid fa-trash-can"></i></a></td>
+								<td><a href="/editUser?id=${sesAllUsers.id }"><i
+										class="fa-solid fa-pen-to-square"></i></a></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</c:when>
+
+		<c:when test="${mode=='MODE_UPDATE' }">
+			<div class="container text-center">
+				<h3>Update User</h3>
+				<hr>
+				<form action="saveEditedUser" method="post"
+					style="background-color: rgba(240, 241, 240, 0.3); border: 2px solid black; border-radius: 10px; margin-top: 40px; padding-left: 50px; padding-right: 50px; padding-bottom: 30px">
+					<div class="form-group">
+						<br>
+						<h3 style="text-align: center;">
+							<b>Signup Here</b>
+						</h3>
+						<br>
+						<div class="form-group">
+							<label for="firstname">First Name</label> <input type="text"
+								class="form-control" id="firstname" name="firstname"
+								placeholder="Enter Firstname" value="${seseditUser.firstname}"
+								required>
+						</div>
+						<div class="form-group">
+							<label for="lastname">Last Name</label> <input type="text"
+								class="form-control" id="lastname" name="lastname"
+								placeholder="Enter Lastname" value="${seseditUser.lastname}"
+								required>
+						</div>
+						<div class="form-group">
+							<label for="mobile">Mobile No.</label> <input type="text"
+								class="form-control" id="mobile" name="mobile"
+								placeholder="Enter Mobile Number" value="${seseditUser.mobile}"
+								required>
+						</div>
+						<div class="form-group">
+							<label for="city">City</label> <input type="text"
+								class="form-control" id="city" name="city"
+								placeholder="Enter City" value="${seseditUser.city}" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label> <input type="text"
+								class="form-control" id="email" name="email"
+								placeholder="Enter Email" value="${seseditUser.email}" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label> <input type="text"
+								class="form-control" id="password" name="password"
+								placeholder="Enter Password" value="${seseditUser.password}"
+								required>
+						</div>
+						<hr
+							style="height: 3px; border-width: 0; color: black; background-color: black;">
+						<button class="btn btn-primary" type="submit"
+							style="text-align: center;">Update</button>
+						&nbsp;&nbsp;
+					</div>
+				</form>
+			</div>
+		</c:when>
+	</c:choose>
+</body>
+</html>

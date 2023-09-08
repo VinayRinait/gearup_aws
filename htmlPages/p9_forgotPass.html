@@ -1,0 +1,117 @@
+<!-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%> -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- <%@ include file="header.jsp"%> -->
+    <meta charset="ISO-8859-1" />
+    <title>Forgot Password</title>
+  </head>
+  <body
+    background="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701702379.jpg"
+  >
+    <div class="container-fluid" id="container">
+      <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+
+        <!-- --form design-->
+        <div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+          <form
+            action="pv10_getOtp.jsp"
+            method="post"
+            style="
+              background-color: rgba(240, 241, 240, 0.3);
+              border: 2px solid black;
+              border-radius: 10px;
+              margin-top: 40px;
+              padding-left: 50px;
+              padding-right: 50px;
+              padding-bottom: 30px;
+            "
+          >
+            <div class="form-group">
+              <br />
+              <h3 style="text-align: center">
+                <b>Forget Password</b>
+              </h3>
+              <br />
+              <div class="form-group">
+                <label for="mobile"><b>Enter Mobile</b></label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="mobile"
+                  name="mobile"
+                  placeholder="Enter Number"
+                  required
+                />
+              </div>
+              <br />
+              <br />
+              <hr
+                style="
+                  height: 3px;
+                  border-width: 0;
+                  color: black;
+                  background-color: black;
+                "
+              />
+
+              <button
+                class="btn btn-warning btn-lg btn-block"
+                type="submit"
+                style="text-align: center"
+              >
+                Get OTP
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+      </div>
+    </div>
+    <br />
+    <br />
+  </body>
+  <!-- <%@ include file="footer.jsp"%> -->
+  <!-- SCRIPT FOR HEADER AND FOOTER SECTION -->
+  <script>
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
+  </script>
+  <!-- jquery -->
+  <script src="../assets/js/jquery-1.11.3.min.js"></script>
+  <!-- bootstrap -->
+  <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+  <!-- count down -->
+  <script src="../assets/js/jquery.countdown.js"></script>
+  <!-- isotope -->
+  <script src="../assets/js/jquery.isotope-3.0.6.min.js"></script>
+  <!-- waypoints -->
+  <script src="../assets/js/waypoints.js"></script>
+  <!-- owl carousel -->
+  <script src="../assets/js/owl.carousel.min.js"></script>
+  <!-- magnific popup -->
+  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+  <!-- mean menu -->
+  <script src="../assets/js/jquery.meanmenu.min.js"></script>
+  <!-- sticker js -->
+  <script src="../assets/js/sticker.js"></script>
+  <!-- main js -->
+  <script src="../assets/js/main.js"></script>
+
+  <!-- Javascript files-->
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.0.0.min.js"></script>
+  <script src="../js/plugin.js"></script>
+  <!-- sidebar -->
+  <script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+  <script src="../js/custom.js"></script>
+</html>

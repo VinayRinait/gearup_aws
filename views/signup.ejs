@@ -1,0 +1,58 @@
+<%- include('headerForSignup.ejs')%>
+
+<body
+	background="https://wallpaper-mania.com/wp-content/uploads/2018/09/High_resolution_wallpaper_background_ID_77701702379.jpg">
+	<div class="container-fluid" id='container'>
+		<div class="row">
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+
+			<!-- --form design-->
+			<div class="col-lg-6 col-md-4 col-sm-4 col-xs-12">
+
+				<form action="/register" method="post"
+					style="background-color: rgba(240, 241, 240, 0.3); border: 2px solid black; border-radius: 10px; margin-top: 40px; padding-left: 50px; padding-right: 50px; padding-bottom: 30px">
+					<div class="form-group">
+						<br>
+						<h3 style="text-align: center;">
+							<b>Signup Here</b>
+						</h3>
+						<br>
+						<div class="form-group">
+							<label for="firstname">Full Name</label> <input type="text"
+								class="form-control" id="fullName" name="fullName"
+								placeholder="Enter fullName" required>
+						</div>
+						<div class="form-group">
+							<label for="mobileNo">Mobile Number</label> <input type="text"
+								class="form-control" id="mobileNo" name="mobileNo"
+								placeholder="Enter Mobile No." required>
+						</div>
+						<div class="form-group">
+							<label for="email">Email</label> <input type="text"
+								class="form-control" id="email" name="email"
+								placeholder="Enter Email" required>
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label> <input type="text"
+								class="form-control" id="password" name="password"
+								placeholder="Enter Password" required>
+						</div>
+
+						<hr
+							style="height: 3px; border-width: 0; color: black; background-color: black;">
+
+						<button class="btn btn-primary" type="submit"
+							style="text-align: center;">SignUp</button>&nbsp;&nbsp;<br>
+						<a href="/" class="btn btn-primary" style="margin-top: 10px;">Login Page</a>  <br>
+
+					</div>
+				</form>
+			</div>
+			<div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+		</div>
+	</div>
+	<br>
+	<br>
+
+</body>
+<%- include('footer.ejs')%>
