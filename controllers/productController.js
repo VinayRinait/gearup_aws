@@ -26,11 +26,10 @@ exports.addProduct = async (req, res, next) => {
                                           price					: data.price,
                                           Category			    : data.Category,
                                           productDescription	: data.productDescription,
-                                          productQuantity       : data.productQuantity,
+                                         
                                           productImage 			: imgArray,
                                           categoryId            : req.body.categoryId,
-                                          merchantId            : req.body.merchantId,
-                                          productWeight         : req.body.productWeight
+                                         
                                           } );
         if(pdata != ""){
         	return res.status(200).json({status:1, message:'Product Submited Succesfully',data:pdata})
@@ -135,12 +134,11 @@ exports.updateProduct = async (req, res, next) => {
                                           price					: req.body.price,
                                           Category   			: req.body.Category,
                                           productDescription	: req.body.productDescription,
-                                          productQuntity    	: req.body.productQuntity,
+                                         
                                           productImage 			: imgArray,
                                           status                : req.body.status,
                                           categoryId            : req.body.categoryId,
-                                          merchantId            : req.body.merchantId,
-                                          productWeight         : req.body.productWeight                         	                                         
+                                                 
                                           } );
         if(data != ""){
             return res.status(200).json({status:1, message:'Product Updated Succesfully',data:data})
