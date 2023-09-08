@@ -20,7 +20,7 @@ exports.getAllDashboardData = async(req,res) => {
 exports.getAllDashboardDataForUser = async(req,res) => {
     try{
         // let resArray = {}
-        let getData = await Dashboard.find().populate('todayDeal').populate('weekDeal').populate('monthDeal').populate('bestCategory')
+        let getData = await Dashboard.find()
         // resArray.bannerImage = getData[0].bannerImage
         // if(req.body.todayDeal == 1){
         //     resArray.todayDeal = getData[0].todayDeal
@@ -45,37 +45,35 @@ exports.getAllDashboardDataForUser = async(req,res) => {
     }
 }
 
-exports.addBanner = async(req,res) => {
-    try{
-        let bannerImage = req.files
-        const data = await Dashboard.findOne({})
-        // console.log(data.bannerImage)
-        // for(i=0; i< bannerImage.length; i++){
-        //     bannerImage[i].path = "https://www.phoolvala.com/banner_images/"+bannerImage[i].filename
-        //     data.bannerImage.push(bannerImage[i])
-        // }
-        // if(data.bannerImage!=[]){
-        //     data.bannerImage.forEach((obj)=>{
-        //         console.log(obj.path)
-        //         fs.unlinkSync(obj.path)
-        //     })
-        // }
-        for(i = 0; i<req.body.bannerImage.length; i++){
-            let buff = new Buffer.from(req.body.bannerImage[i].path, 'base64');
-            let fileName = Date.now()+i+'.png'
-            let filePath = "public/banner_images/"+i+ fileName
+exports.addBanner = async (req, res) => {
+    try {
+        let bannerImages = req.body.bannerImage;
+        let data = await Dashboard.findOne({});
+
+        if (!data) {
+            // Create a new "Dashboard" document if none is found
+            data = new Dashboard();
+        }
+
+        for (let i = 0; i < bannerImages.length; i++) {
+            let buff = new Buffer.from(bannerImages[i].path, 'base64');
+            let fileName = Date.now() + i + '.png';
+            let filePath = "public/banner_images/" + i + fileName;
             fs.writeFileSync(filePath, buff);
-            let dbFilePath = URL+'/banner_images/'+fileName
-            data.bannerImage.push({path:dbFilePath.toString()})
+            let dbFilePath = URL + 'banner_images/' + fileName;
+            data.bannerImage.push({ path: dbFilePath.toString() });
         }
-        let saveImg = await data.save()
-        if(saveImg != ""){
-        	return res.status(200).json({status:1, message:'Banner Images Uploaded Succesfully',data:data})
-        }else{
-        	return res.status(401).json({ code:200,status:0,message : "Try Again ",data : {} })
+
+        let saveImg = await data.save();
+        if (saveImg !== null) {
+            return res.status(200).json({ status: 1, message: 'Banner Images Uploaded Successfully', data: data });
+        } else {
+            return res.status(401).json({ code: 200, status: 0, message: 'Try Again', data: {} });
         }
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+        console.log(error);
+        // Handle the error appropriately
+        return res.status(500).json({ status: 0, message: 'Internal Server Error', data: {} });
     }
 };
 
@@ -88,7 +86,7 @@ exports.deleteBanner = async(req,res) => {
             data.bannerImage.forEach((obj)=>{
                 console.log(obj.path)
                 if(obj.path == bannerPath){
-                    fs.unlinkSync("/home/ubuntu/p6_dev_changes/public/banner_images/"+obj.filename)
+                    fs.unlinkSync("/public/banner_images/"+obj.filename)
                 }
             })
         }
