@@ -1,47 +1,46 @@
 const Product = require("../models/productModel.js");
 const fs = require('fs');
 const {URL} = require('../config/config')
-
 exports.addProduct = async (req, res, next) => {
-    try{
-        // if(req.files == ""){
-        //    return res.status(200).json({status:0, message:'Image Must not be Empty',data:{}})
-        // }
-        let data = {...req.body};
-        // let productImage = req.files
-        // for(i=0; i< productImage.length; i++){
-        //     productImage[i].path = "https://www.phoolvala.com/product_images/"+productImage[i].filename
-        // }
+    try {
+        let data = { ...req.body };
         let imgArray = [];
-        for(i = 0; i<data.productImage.length; i++){
+
+        for (let i = 0; i < data.productImage.length; i++) {
             let buff = new Buffer.from(data.productImage[i].path, 'base64');
-            let fileName = Date.now()+i+'.png'
-            let filePath = "public/product_images/"+ fileName
-            fs.writeFileSync(filePath, buff);
-            let dbFilePath = URL+'/product_images/'+fileName
-            imgArray.push({path:dbFilePath.toString()})
+            let fileName = Date.now() + i + '.png';
+            let filePath = "public/product_images/" + fileName;
+
+            try {
+                fs.writeFileSync(filePath, buff);
+            } catch (writeError) {
+                console.error(writeError);
+                return res.status(500).json({ status: 0, message: 'Error saving image', data: {} });
+            }
+
+            let dbFilePath = URL + '/product_images/' + fileName;
+            imgArray.push({ path: dbFilePath.toString() });
         }
-        let pdata = await Product.create({ 
-                                          productName			: data.productName,
-                                          price					: data.price,
-                                          Category			    : data.Category,
-                                          productDescription	: data.productDescription,
-                                         
-                                          productImage 			: imgArray,
-                                          categoryId            : req.body.categoryId,
-                                         
-                                          } );
-        if(pdata != ""){
-        	return res.status(200).json({status:1, message:'Product Submited Succesfully',data:pdata})
-        }else{
-        	return res.status(401).json({ code:200,status:0,message : "Try Again ",data : {} })
+
+        let pdata = await Product.create({
+            productName: data.productName,
+            price: data.price,
+            Category: data.Category,
+            productDescription: data.productDescription,
+            productImage: imgArray,
+            categoryId: req.body.categoryId,
+        });
+
+        if (pdata) {
+            return res.status(200).json({ status: 1, message: 'Product Submitted Successfully', data: pdata });
+        } else {
+            return res.status(401).json({ code: 200, status: 0, message: 'Try Again', data: {} });
         }
-    	
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ status: 0, message: 'Internal Server Error', data: {} });
     }
 };
-
 exports.getProduct = async (req, res, next) => {
     try{
             let data = await Product.find({is_deleted: 0})
