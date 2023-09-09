@@ -6,7 +6,7 @@ const auth = require("../config/middleware.js")
 
 router.post("/addProduct", productController.addProduct) 
 router.get("/getProduct", productController.getProduct)  
-router.get("/getrelatedProduct", productController.getRelatedProducts)  
+// router.get("/getrelatedProduct", productController.getRelatedProducts)  
 router.post("/getProductById", productController.getProductById) 
 router.post("/deleteProduct", productController.deleteProduct) 
 router.post("/updateProduct", productController.updateProduct)  
