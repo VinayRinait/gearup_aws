@@ -55,32 +55,25 @@ exports.addBanner = async (req, res) => {
             data = new Dashboard();
         }
 
-        // for (let i = 0; i < bannerImages.length; i++) {
-        //     let buff = new Buffer.from(bannerImages[i].path, 'base64');
-        //     let fileName = Date.now() + i + '.png';
-        //     let filePath = "public/banner_images/" + i + fileName;
-        //     fs.writeFileSync(filePath, buff);
-        //     let dbFilePath = URL + '/banner_images/' + fileName;
-        //     data.bannerImage.push({ path: dbFilePath.toString() });
-        // }
-        for (let i = 0; i < data.bannerImages[i].length; i++) {
+        for (let i = 0; i < bannerImages.length; i++) {
             try {
-                let buff = new Buffer.from(data.bannerImages[i].path, 'base64');
+                let buff = new Buffer.from(bannerImages[i].path, 'base64');
                 let fileName = Date.now() + i + '.png';
                 let filePath = "public/banner_images/" + fileName;
-        
+
                 // Create the directory if it doesn't exist
                 fs.mkdirSync("public/banner_images", { recursive: true });
-        
+
                 // Write the file
                 fs.writeFileSync(filePath, buff);
-        
+
                 let dbFilePath = URL + '/banner_images/' + fileName;
-                imgArray.push({ path: dbFilePath.toString() });
+                data.bannerImages.push({ path: dbFilePath.toString() });
             } catch (error) {
                 console.error("Error while creating and writing the file:", error);
             }
         }
+
         let saveImg = await data.save();
         if (saveImg !== null) {
             return res.status(200).json({ status: 1, message: 'Banner Images Uploaded Successfully', data: data });
@@ -93,6 +86,7 @@ exports.addBanner = async (req, res) => {
         return res.status(500).json({ status: 0, message: 'Internal Server Error', data: {} });
     }
 };
+
 
 exports.deleteBanner = async(req,res) => {
     try{
