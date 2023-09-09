@@ -7,21 +7,23 @@ exports.addProduct = async (req, res, next) => {
         let imgArray = [];
 
         for (let i = 0; i < data.productImage.length; i++) {
-            let buff = new Buffer.from(data.productImage[i].path, 'base64');
-            let fileName = Date.now() + i + '.png';
-            let filePath = "public/product_images/" + fileName;
-
             try {
+                let buff = new Buffer.from(data.productImage[i].path, 'base64');
+                let fileName = Date.now() + i + '.png';
+                let filePath = "public/product_images/" + fileName;
+        
+                // Create the directory if it doesn't exist
+                fs.mkdirSync("public/product_images", { recursive: true });
+        
+                // Write the file
                 fs.writeFileSync(filePath, buff);
-            } catch (writeError) {
-                console.error(writeError);
-                return res.status(500).json({ status: 0, message: 'Error saving image', data: {} });
+        
+                let dbFilePath = URL + '/product_images/' + fileName;
+                imgArray.push({ path: dbFilePath.toString() });
+            } catch (error) {
+                console.error("Error while creating and writing the file:", error);
             }
-
-            let dbFilePath = URL + '/product_images/' + fileName;
-            imgArray.push({ path: dbFilePath.toString() });
         }
-
         let pdata = await Product.create({
             productName: data.productName,
             price: data.price,
