@@ -44,10 +44,15 @@ exports.getAllDashboardDataForUser = async(req,res) => {
         console.log(error)
     }
 }
-
 exports.addBanner = async (req, res) => {
     try {
-        const bannerImages = req.body.bannerImages; // Corrected field name
+        const bannerImages = req.body.bannerImages;
+
+        // Check if bannerImages is not an array
+        if (!Array.isArray(bannerImages)) {
+            return res.status(400).json({ status: 0, message: 'Invalid request payload' });
+        }
+
         let data = await Dashboard.findOne({});
 
         if (!data) {
@@ -55,16 +60,16 @@ exports.addBanner = async (req, res) => {
             data = new Dashboard();
         }
 
-        // Ensure that bannerImages is initialized as an array
+        // Ensure that bannerImages is initialized as an empty array if it doesn't exist
         if (!data.bannerImages) {
             data.bannerImages = [];
         }
 
         for (let i = 0; i < bannerImages.length; i++) {
             try {
-                let buff = new Buffer.from(bannerImages[i].path, 'base64');
-                let fileName = Date.now() + i + '.png';
-                let filePath = "public/banner_images/" + fileName;
+                const buff = Buffer.from(bannerImages[i].path, 'base64');
+                const fileName = Date.now() + i + '.png';
+                const filePath = "public/banner_images/" + fileName;
 
                 // Create the directory if it doesn't exist
                 fs.mkdirSync("public/banner_images", { recursive: true });
@@ -72,14 +77,14 @@ exports.addBanner = async (req, res) => {
                 // Write the file
                 fs.writeFileSync(filePath, buff);
 
-                let dbFilePath = '/banner_images/' + fileName; // Removed URL variable
+                const dbFilePath = '/banner_images/' + fileName; // Removed URL variable
                 data.bannerImages.push({ path: dbFilePath.toString() });
             } catch (error) {
                 console.error("Error while creating and writing the file:", error);
             }
         }
 
-        let saveImg = await data.save();
+        const saveImg = await data.save();
         if (saveImg !== null) {
             return res.status(200).json({ status: 1, message: 'Banner Images Uploaded Successfully', data: data });
         } else {
