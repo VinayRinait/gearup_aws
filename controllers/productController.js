@@ -169,10 +169,10 @@ exports.updateProduct = async (req, res, next) => {
 };
 exports.getRelatedProducts = async (req, res, next) => {
     try {
-        // const _id = req.params.productId;
+        const productId = req.params.productId;
 
         // Fetch the details of the current product
-        const currentProduct = await Product.findById({_id:req.params.productId});
+        const currentProduct = await Product.findById(productId);
 
         if (!currentProduct) {
             return res.status(404).json({ status: 0, message: 'Product not found', data: {} });
@@ -180,9 +180,9 @@ exports.getRelatedProducts = async (req, res, next) => {
 
         // Define criteria for related products (based on categoryId)
         const relatedProducts = await Product.find({
-            categoryId: currentProduct.categoryId, // Use the correct field name
-            _id: { $ne: productId },
-            is_deleted: 0,
+            categoryId: currentProduct.categoryId,
+            _id: { $ne: productId }, // Exclude the current product
+            is_deleted: "0", // Use string "0" to match your data
         }).limit(5);
 
         return res.status(200).json({ status: 1, message: 'Related products fetched successfully', data: relatedProducts });
@@ -191,4 +191,3 @@ exports.getRelatedProducts = async (req, res, next) => {
         return res.status(500).json({ status: 0, message: 'Internal server error', data: {} });
     }
 };
-
