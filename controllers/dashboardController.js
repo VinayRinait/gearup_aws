@@ -47,12 +47,17 @@ exports.getAllDashboardDataForUser = async(req,res) => {
 
 exports.addBanner = async (req, res) => {
     try {
-        let bannerImages = req.body.bannerImage;
+        const bannerImages = req.body.bannerImages; // Corrected field name
         let data = await Dashboard.findOne({});
 
         if (!data) {
             // Create a new "Dashboard" document if none is found
             data = new Dashboard();
+        }
+
+        // Ensure that bannerImages is initialized as an array
+        if (!data.bannerImages) {
+            data.bannerImages = [];
         }
 
         for (let i = 0; i < bannerImages.length; i++) {
@@ -67,7 +72,7 @@ exports.addBanner = async (req, res) => {
                 // Write the file
                 fs.writeFileSync(filePath, buff);
 
-                let dbFilePath = URL + '/banner_images/' + fileName;
+                let dbFilePath = '/banner_images/' + fileName; // Removed URL variable
                 data.bannerImages.push({ path: dbFilePath.toString() });
             } catch (error) {
                 console.error("Error while creating and writing the file:", error);
@@ -86,7 +91,6 @@ exports.addBanner = async (req, res) => {
         return res.status(500).json({ status: 0, message: 'Internal Server Error', data: {} });
     }
 };
-
 
 exports.deleteBanner = async(req,res) => {
     try{
