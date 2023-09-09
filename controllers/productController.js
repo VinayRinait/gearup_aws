@@ -167,28 +167,29 @@ exports.updateProduct = async (req, res, next) => {
         console.log(error)
     }
 };
-exports.getRelatedProducts = async (req, res, next) => {
-    try {
-        const productId = req.params.productId;
 
-        // Fetch the details of the current product
-        const currentProduct = await Product.findById(productId);
+// exports.getRelatedProducts = async (req, res, next) => {
+//     try {
+//         const productId = req.params.productId;
 
-        if (!currentProduct) {
-            return res.status(404).json({ status: 0, message: 'Product not found', data: {} });
-        }
+//         // Fetch the details of the current product
+//         const currentProduct = await Product.findById(productId);
 
-        // Define criteria for related products (based on categoryId)
-        const relatedProducts = await Product.find({
-            categoryId: currentProduct.categoryId,
-            _id: { $ne: productId }, // Exclude the current product
-            is_deleted: "0", // Use string "0" to match your data
-        }).limit(5);
+//         if (!currentProduct) {
+//             return res.status(404).json({ status: 0, message: 'Product not found', data: {} });
+//         }
 
-        return res.status(200).json({ status: 1, message: 'Related products fetched successfully', data: relatedProducts });
-    } catch (error) {
-        console.error(error);
-        return res.status(500).json({ status: 0, message: 'Internal server error', data: {} });
-    }
-};
+//         // Define criteria for related products (based on categoryId)
+//         const relatedProducts = await Product.find({
+//             categoryId: currentProduct.categoryId,
+//             _id: { $ne: productId }, // Exclude the current product
+//             is_deleted: "0", // Use string "0" to match your data
+//         }).limit(5);
+
+//         return res.status(200).json({ status: 1, message: 'Related products fetched successfully', data: relatedProducts });
+//     } catch (error) {
+//         console.error(error);
+//         return res.status(500).json({ status: 0, message: 'Internal server error', data: {} });
+//     }
+// };
 
