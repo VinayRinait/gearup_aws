@@ -169,10 +169,10 @@ exports.updateProduct = async (req, res, next) => {
 };
 exports.getRelatedProducts = async (req, res, next) => {
     try {
-        const productId = req.params.productId;
+        // const productId = req.params.productId;
 
         // Fetch the details of the current product
-        const currentProduct = await Product.findById({productId,is_deleted: 0});
+        const currentProduct = await Product.findById({productId:req.params.productId,is_deleted: 0});
 
         if (!currentProduct) {
             return res.status(404).json({ status: 0, message: 'Product not found', data: {} });
