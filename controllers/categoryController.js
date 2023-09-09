@@ -3,41 +3,47 @@ var mongoose = require("mongoose");
 const fs = require("fs");
 const {URL} = require('../config/config')
 
-
 exports.addCategory = async (req, res, next) => {
-    try{
-        // if(req.files == ""){
-        //    return res.status(200).json({status:0, message:'Image Must not be Empty',data:{}})
-        // }
-        // let categoryImage = req.files
-        // for(i=0; i< categoryImage.length; i++){
-        //     categoryImage[i].path = "https://www.phoolvala.com/category_images/"+categoryImage[i].filename
-        // }
-        let data = {...req.body};
+    try {
+        let data = { ...req.body };
         let imgArray = [];
-        for(i = 0; i<data.categoryImage.length; i++){
-            let buff = new Buffer.from(data.categoryImage[i].path, 'base64');
-            let fileName = Date.now()+i+'.png'
-            let filePath = "public/category_images/"+ fileName
-            fs.writeFileSync(filePath, buff);
-            let dbFilePath = URL+'/category_images/'+fileName
-            imgArray.push({path:dbFilePath.toString()})
+
+        for (let i = 0; i < data.categoryImage.length; i++) {
+            try {
+                let buff = new Buffer.from(data.categoryImage[i].path, 'base64');
+                let fileName = Date.now() + i + '.png';
+                let filePath = "public/category_images/" + fileName;
+
+                // Create the directory if it doesn't exist
+                fs.mkdirSync("public/category_images", { recursive: true });
+
+                // Write the file
+                fs.writeFileSync(filePath, buff);
+
+                let dbFilePath = URL + '/category_images/' + fileName;
+                imgArray.push({ path: dbFilePath.toString() });
+            } catch (error) {
+                console.error("Error while creating and writing the file:", error);
+            }
         }
-        let reg = await Category.create({ 
-                                          categoryName			: data.categoryName,
-                                          categoryImage         : imgArray
-                                          } );
-        if(reg != ""){
-        	return res.status(200).json({status:1, message:'Category Submited Succesfully',data:reg})
-        }else{
-        	return res.status(401).json({ code:200,status:0,message : "Try Again ",data : {} })
+
+        let reg = await Category.create({
+            categoryName: data.categoryName,
+            categoryImage: imgArray
+        });
+
+        if (reg != "") {
+            return res.status(200).json({ status: 1, message: 'Category Submitted Successfully', data: reg });
+        } else {
+            return res.status(401).json({ code: 200, status: 0, message: "Try Again", data: {} });
         }
-    	
-    }catch(error){
-        console.log(error)
+
+    } catch (error) {
+        console.error(error);
+        // Handle other errors or send an appropriate response
+        return res.status(500).json({ status: 0, message: 'Internal Server Error', data: {} });
     }
 };
-
 exports.getCategory = async (req, res, next) => {
     try{
             let category = await Category.find({is_deleted: 0})
