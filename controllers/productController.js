@@ -169,21 +169,12 @@ exports.updateProduct = async (req, res, next) => {
     }
 };
 
-
-// Create a new endpoint for real-time search based on the initial character(s)
 exports.searchProductsByInitialCharacter = async (req, res, next) => {
     try {
         const { initialCharacter } = req.query;
-
-        // Create a query object to search for products
-        const query = {
-            is_deleted: 0,
-        };
-
-        if (initialCharacter) {
-            // Use a regular expression to search for products with names starting with the initial character(s)
-            query.productName = { $regex: `^${initialCharacter}`, $options: 'i' };
-        } else {
+        
+        // Check if initialCharacter is provided
+        if (!initialCharacter) {
             return res.status(400).json({
                 status: 0,
                 message: 'Please provide an initial character for the search.',
@@ -191,6 +182,13 @@ exports.searchProductsByInitialCharacter = async (req, res, next) => {
             });
         }
 
+        // Create a query object to search for products
+        const query = {
+            is_deleted: 0,
+            productName: { $regex: `^${initialCharacter}`, $options: 'i' },
+        };
+
+        // Perform the database query
         const products = await Product.find(query);
 
         if (products.length > 0) {
@@ -207,7 +205,7 @@ exports.searchProductsByInitialCharacter = async (req, res, next) => {
             });
         }
     } catch (error) {
-        console.error(error);
+        console.error("Error:", error);
         return res.status(500).json({
             status: 0,
             message: 'Internal Server Error',
