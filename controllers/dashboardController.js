@@ -45,40 +45,39 @@ exports.getAllDashboardDataForUser = async(req,res) => {
     }
 }
 
-exports.addBanner = async(req,res) => {
-    try{
-        let bannerImage = req.files
-        const data = await Dashboard.findOne({})
-        // console.log(data.bannerImage)
-        // for(i=0; i< bannerImage.length; i++){
-        //     bannerImage[i].path = "https://www.phoolvala.com/banner_images/"+bannerImage[i].filename
-        //     data.bannerImage.push(bannerImage[i])
-        // }
-        // if(data.bannerImage!=[]){
-        //     data.bannerImage.forEach((obj)=>{
-        //         console.log(obj.path)
-        //         fs.unlinkSync(obj.path)
-        //     })
-        // }
-        for(i = 0; i<req.body.bannerImage.length; i++){
-            let buff = new Buffer.from(req.body.bannerImage[i].path, 'base64');
-            let fileName = Date.now()+i+'.png'
-            let filePath = "public/banner_images/"+i+ fileName
-            fs.writeFileSync(filePath, buff);
-            let dbFilePath = URL+'/banner_images/'+fileName
-            data.bannerImage.push({path:dbFilePath.toString()})
+exports.addBanner = async (req, res) => {
+    try {
+        const bannerImages = req.body.bannerImage;
+        const data = await Dashboard.findOne({});
+
+        for (let i = 0; i < bannerImages.length; i++) {
+            const base64Data = bannerImages[i].path.replace(/^data:image\/png;base64,/, '');
+            const fileName = Date.now() + i + '.png';
+            const filePath = path.join(__dirname, 'public/banner_images', fileName);
+
+            // Create the directory if it doesn't exist
+            const directory = path.dirname(filePath);
+            if (!fs.existsSync(directory)) {
+                fs.mkdirSync(directory, { recursive: true });
+            }
+
+            fs.writeFileSync(filePath, Buffer.from(base64Data, 'base64'));
+            const dbFilePath = URL + '/banner_images/' + fileName;
+            data.bannerImage.push({ path: dbFilePath });
         }
-        let saveImg = await data.save()
-        if(saveImg != ""){
-        	return res.status(200).json({status:1, message:'Banner Images Uploaded Succesfully',data:data})
-        }else{
-        	return res.status(401).json({ code:200,status:0,message : "Try Again ",data : {} })
+
+        const saveImg = await data.save();
+
+        if (saveImg) {
+            return res.status(200).json({ status: 1, message: 'Banner Images Uploaded Successfully', data: data });
+        } else {
+            return res.status(401).json({ code: 200, status: 0, message: 'Try Again', data: {} });
         }
-    }catch(error){
-        console.log(error)
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ status: 0, message: 'Internal Server Error' });
     }
 };
-
 exports.deleteBanner = async(req,res) => {
     try{
         let bannerPath = req.body.bannerPath
