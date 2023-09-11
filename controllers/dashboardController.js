@@ -53,7 +53,7 @@ exports.addBanner = async (req, res) => {
         for (let i = 0; i < bannerImages.length; i++) {
             const base64Data = bannerImages[i].path.replace(/^data:image\/png;base64,/, '');
             const fileName = Date.now() + i + '.png';
-            const filePath = path.join(__dirname, 'public/banner_images', fileName);
+            const filePath = path.join(__dirname, '../public/banner_images', fileName);
 
             // Create the directory if it doesn't exist
             const directory = path.dirname(filePath);
