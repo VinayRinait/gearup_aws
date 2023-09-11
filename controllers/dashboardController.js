@@ -2,7 +2,7 @@ const Dashboard = require("../models/dashboardModel");
 const Product = require("../models/productModel.js");
 const fs = require("fs")
 const {URL} = require('../config/config')
-
+const path = require("path")
 exports.getAllDashboardData = async(req,res) => {
     try{
         let getData = await Dashboard.find()
