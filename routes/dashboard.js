@@ -15,7 +15,7 @@ router.post("/addmonthdeal",dashboardController.addMonthDeal)
 router.post("/deletemonthdeal",dashboardController.deleteMonthDeal)
 router.post("/addbestcategory",dashboardController.addBestCategory)
 router.post("/deletebestcategory",dashboardController.deleteBestCategory)
-router.post("/getPackages",dashboardController.getPackages)
+// router.post("/getPackages",dashboardController.getPackages)
 
 
 module.exports = router;
