@@ -47,7 +47,8 @@ exports.getAllDashboardDataForUser = async(req,res) => {
 
 exports.addBanner = async (req, res) => {
     try {
-        const bannerImages = req.body.bannerImage;
+        const bannerImages = req.body.bannerImage || [];
+
         const data = await Dashboard.findOne({});
 
         for (let i = 0; i < bannerImages.length; i++) {
