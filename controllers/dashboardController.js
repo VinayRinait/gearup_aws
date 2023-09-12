@@ -44,12 +44,16 @@ exports.getAllDashboardDataForUser = async(req,res) => {
         console.log(error)
     }
 }
-
 exports.addBanner = async (req, res) => {
     try {
-        const bannerImages = req.body.bannerImage || [];
-
+        const bannerImages = req.body.bannerImage;
         const data = await Dashboard.findOne({});
+
+        // Check if data is null or undefined
+        if (!data) {
+            // Handle the case where data is null or undefined, e.g., by creating a new Dashboard document
+            data = new Dashboard();
+        }
 
         for (let i = 0; i < bannerImages.length; i++) {
             const base64Data = bannerImages[i].path.replace(/^data:image\/png;base64,/, '');
@@ -64,6 +68,12 @@ exports.addBanner = async (req, res) => {
 
             fs.writeFileSync(filePath, Buffer.from(base64Data, 'base64'));
             const dbFilePath = URL + '/banner_images/' + fileName;
+
+            // Make sure data.bannerImage is initialized as an array
+            if (!Array.isArray(data.bannerImage)) {
+                data.bannerImage = [];
+            }
+
             data.bannerImage.push({ path: dbFilePath });
         }
 
@@ -79,6 +89,9 @@ exports.addBanner = async (req, res) => {
         return res.status(500).json({ status: 0, message: 'Internal Server Error' });
     }
 };
+
+
+
 exports.deleteBanner = async(req,res) => {
     try{
         let bannerPath = req.body.bannerPath
