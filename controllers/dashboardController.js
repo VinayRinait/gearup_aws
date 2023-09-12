@@ -46,8 +46,8 @@ exports.getAllDashboardDataForUser = async(req,res) => {
 }
 exports.addBanner = async (req, res) => {
     try {
-        const bannerImages = req.body.bannerImage;
-        const data = await Dashboard.findOne({});
+        let bannerImages = req.body.bannerImage;
+        let data = await Dashboard.findOne({});
 
         // Check if data is null or undefined
         if (!data) {
